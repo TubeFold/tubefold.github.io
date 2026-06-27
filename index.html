@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>TubeFold — Markdown summaries of YouTube videos</title>
+<meta name="description" content="A macOS app that turns YouTube videos into Markdown summaries using your existing codex / claude CLI subscription. No API key." />
+<meta property="og:title" content="TubeFold" />
+<meta property="og:description" content="Turn YouTube videos into Markdown summaries with your CLI model subscription." />
+<meta property="og:type" content="website" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23ff3b30'/><path d='M40 32l26 18-26 18z' fill='white'/></svg>" />
+<style>
+  :root {
+    --bg: #0d0d0f;
+    --surface: #16161a;
+    --border: #26262c;
+    --text: #f4f4f5;
+    --muted: #a1a1aa;
+    --accent: #ff3b30;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+
+  header { padding: 80px 0 48px; text-align: center; }
+  .logo {
+    width: 72px; height: 72px; border-radius: 18px; background: var(--accent);
+    display: inline-flex; align-items: center; justify-content: center; margin-bottom: 28px;
+  }
+  .logo svg { width: 34px; height: 34px; }
+  h1 { font-size: 44px; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 16px; font-weight: 600; }
+  .tagline { font-size: 19px; color: var(--muted); margin: 0 auto 36px; max-width: 540px; }
+
+  .install {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px 14px 20px; font-family: var(--mono);
+    font-size: 15px; text-align: left;
+  }
+  .install code { color: var(--text); white-space: nowrap; }
+  .install .prompt { color: var(--accent); }
+  .copy {
+    border: 1px solid var(--border); background: #1e1e23; color: var(--text);
+    border-radius: 8px; padding: 7px 12px; font-size: 13px; font-family: var(--sans);
+    cursor: pointer; transition: background .15s; white-space: nowrap;
+  }
+  .copy:hover { background: #2a2a31; }
+  .copy.done { color: var(--accent); border-color: var(--accent); }
+
+  .download { margin-top: 22px; font-size: 14px; color: var(--muted); }
+  .download a { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+  section { padding: 40px 0; border-top: 1px solid var(--border); }
+  h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); font-weight: 500; margin: 0 0 24px; }
+
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .feature { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .feature h3 { margin: 0 0 8px; font-size: 17px; font-weight: 600; }
+  .feature p { margin: 0; color: var(--muted); font-size: 15px; }
+
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: 18px; }
+  .steps li { display: flex; gap: 16px; align-items: flex-start; }
+  .steps li::before {
+    counter-increment: step; content: counter(step);
+    flex: none; width: 30px; height: 30px; border-radius: 50%;
+    background: var(--surface); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-variant-numeric: tabular-nums; color: var(--accent);
+  }
+  .steps b { font-weight: 600; }
+  .steps .pipe { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+  footer { padding: 48px 0 64px; text-align: center; color: var(--muted); font-size: 14px; border-top: 1px solid var(--border); }
+  footer a { text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+  .note { font-size: 13px; color: #6b6b73; margin-top: 10px; }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 34px; }
+    .features { grid-template-columns: 1fr; }
+    .install { flex-direction: column; align-items: stretch; gap: 12px; }
+    .install code { white-space: normal; word-break: break-all; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <span class="logo" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><path d="M38 28l30 22-30 22z" fill="white"/></svg>
+      </span>
+      <h1>TubeFold</h1>
+      <p class="tagline">Turn any YouTube video into a clean Markdown summary — using your existing <code>codex</code> or <code>claude</code> CLI subscription. No API key, no per-token billing.</p>
+
+      <div class="install">
+        <code><span class="prompt">$</span> brew install --cask tubefold/tap/tubefold</code>
+        <button class="copy" id="copy" aria-label="Copy install command">Copy</button>
+      </div>
+      <p class="download">or <a href="https://github.com/TubeFold/App/releases/latest/download/TubeFold.zip">download TubeFold.zip</a> directly · macOS, notarized</p>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section>
+      <h2>Why TubeFold</h2>
+      <div class="features">
+        <div class="feature">
+          <h3>Your subscription, not an API</h3>
+          <p>Runs your local <code>codex</code> or <code>claude</code> CLI under the hood. The model never sees an API key — it works off the plan you already pay for.</p>
+        </div>
+        <div class="feature">
+          <h3>Native macOS app</h3>
+          <p>Notarized Developer ID build with an embedded Python backend. Nothing to configure beyond pointing it at your CLI.</p>
+        </div>
+        <div class="feature">
+          <h3>Clean Markdown out</h3>
+          <p>Transcript in, structured Markdown summary out — ready to paste into notes, docs, or your knowledge base.</p>
+        </div>
+        <div class="feature">
+          <h3>Updates itself</h3>
+          <p>Built-in Sparkle auto-update keeps you on the latest version. Install once and forget about it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span><b>Paste a YouTube URL.</b> <span class="pipe">video ID → metadata → transcript</span></span></li>
+        <li><span><b>TubeFold pulls the transcript</b> and wraps it in a summary prompt.</span></li>
+        <li><span><b>Your CLI model runs locally</b> — TubeFold takes only the final message.</span></li>
+        <li><span><b>You get a Markdown summary</b> to save or share.</span></li>
+      </ol>
+    </section>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <a href="https://github.com/TubeFold">github.com/TubeFold</a>
+      <p class="note">Distributed outside the Mac App Store via signed, notarized Developer ID build.</p>
+    </div>
+  </footer>
+
+<script>
+  (function () {
+    var cmd = "brew install --cask tubefold/tap/tubefold";
+    var btn = document.getElementById("copy");
+    btn.addEventListener("click", function () {
+      navigator.clipboard.writeText(cmd).then(function () {
+        btn.textContent = "Copied";
+        btn.classList.add("done");
+        setTimeout(function () { btn.textContent = "Copy"; btn.classList.remove("done"); }, 1800);
+      });
+    });
+  })();
+</script>
+</body>
+</html>
