@@ -10,11 +10,11 @@
 <meta property="og:description" content="Summarize YouTube with the AI subscription you already pay for. Native Mac app, plain Markdown files, no API keys." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tubefold.github.io/" />
-<meta property="og:image" content="https://tubefold.github.io/apple-touch-icon.png" />
-<meta name="twitter:card" content="summary" />
+<meta property="og:image" content="https://tubefold.github.io/assets/library.png" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="TubeFold — YouTube to Markdown notes" />
 <meta name="twitter:description" content="Summarize YouTube with the AI subscription you already pay for. Native Mac app, plain Markdown files, no API keys." />
-<meta name="twitter:image" content="https://tubefold.github.io/apple-touch-icon.png" />
+<meta name="twitter:image" content="https://tubefold.github.io/assets/library.png" />
 <link rel="icon" type="image/png" href="logo.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <script type="application/ld+json">
@@ -118,6 +118,25 @@
   .get .or { align-self: center; font-size: 13px; color: var(--faint); user-select: none; }
   .reqs { margin-top: 14px; font-size: 13px; color: var(--faint); }
   .reqs a { color: var(--faint); }
+  .hero-shot {
+    width: calc(100vw - 32px);
+    max-width: 1040px;
+    margin: -18px auto 56px;
+  }
+  .hero-shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 24px 70px rgba(0,0,0,.22);
+  }
+  .hero-shot figcaption {
+    max-width: 620px;
+    margin: 14px auto 0;
+    color: var(--faint);
+    font-size: 13px;
+    line-height: 1.5;
+  }
 
   /* Sections */
   section { padding: 56px 0; border-top: 1px solid var(--hairline); }
@@ -226,6 +245,9 @@
     td:first-child { white-space: normal; }
     th, td { padding: 10px 8px; font-size: 13.5px; }
     section { padding: 44px 0; }
+    .hero { padding: 48px 0 38px; }
+    .hero-shot { width: calc(100vw - 20px); margin: -8px auto 42px; }
+    .hero-shot img { border-radius: 14px; }
   }
 </style>
 </head>
@@ -261,6 +283,11 @@
     <p class="reqs">Free &amp; open source (MIT) · macOS 26+ · uses your own <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> or <a href="https://github.com/openai/codex">Codex</a> CLI</p>
   </div>
 </header>
+
+<figure class="hero-shot">
+  <img src="assets/library.png" alt="TubeFold library window showing YouTube videos moving from queued to summarizing to ready, with actions to open Telegraph, PDF, or YouTube" width="2024" height="1568" />
+  <figcaption>Paste a YouTube link, let your local AI CLI summarize it, then keep the result as Markdown, PDF, or a shareable Telegraph page.</figcaption>
+</figure>
 
 <main id="main">
 <div class="wrap">
