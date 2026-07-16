@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>TubeFold &mdash; Turn YouTube videos into Markdown notes on your Mac</title>
+<title>TubeFold - Turn YouTube videos into Markdown notes on your Mac</title>
 <meta name="description" content="Free, open-source macOS app that summarizes YouTube videos into structured Markdown notes using your own Claude Code or Codex subscription. No API keys, no account, no servers." />
 <link rel="canonical" href="https://tubefold.github.io/" />
-<meta property="og:title" content="TubeFold &mdash; YouTube videos to Markdown notes" />
+<meta property="og:title" content="TubeFold - YouTube videos to Markdown notes" />
 <meta property="og:description" content="Paste a YouTube link. Get a clean Markdown note with summary, key ideas, takeaways, and sources. No API keys." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://tubefold.github.io/" />
 <meta property="og:image" content="https://tubefold.github.io/assets/library.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="TubeFold &mdash; YouTube videos to Markdown notes" />
+<meta name="twitter:title" content="TubeFold - YouTube videos to Markdown notes" />
 <meta name="twitter:description" content="Paste a YouTube link. Get a clean Markdown note with summary, key ideas, takeaways, and sources. No API keys." />
 <meta name="twitter:image" content="https://tubefold.github.io/assets/library.png" />
 <link rel="icon" type="image/png" href="logo.png" />
@@ -114,7 +114,7 @@
   .get { display: flex; justify-content: center; align-items: stretch; gap: 14px; flex-wrap: wrap; }
   .get .btn { display: inline-flex; align-items: center; gap: 9px; }
   .get .or { align-self: center; font-size: 13px; color: var(--faint); user-select: none; }
-  .reqs { margin-top: 14px; font-size: 13px; color: var(--faint); }
+  .reqs { display: flex; justify-content: center; gap: 6px 18px; flex-wrap: wrap; margin-top: 14px; font-size: 13px; color: var(--faint); }
   .reqs a { color: var(--faint); }
   .hero-shot {
     width: calc(100vw - 32px);
@@ -128,14 +128,6 @@
     border-radius: 20px;
     filter: drop-shadow(0 24px 44px rgba(0,0,0,.28));
   }
-  .hero-shot figcaption {
-    max-width: 620px;
-    margin: 14px auto 0;
-    color: var(--faint);
-    font-size: 13px;
-    line-height: 1.5;
-  }
-
   /* Sections */
   section { padding: 56px 0; border-top: 1px solid var(--hairline); }
   .kicker { font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); font-weight: 600; margin: 0 0 10px; }
@@ -151,7 +143,6 @@
   }
   .pipe .step b { display: block; font-size: 14px; font-weight: 600; margin-bottom: 3px; }
   .pipe .step span { font-size: 12.5px; color: var(--muted); line-height: 1.45; display: block; }
-  .pipe .step .n { color: var(--accent); font-family: var(--mono); font-size: 12px; display: block; margin-bottom: 6px; }
 
   /* Example note */
   .note-demo {
@@ -199,7 +190,7 @@
   }
   details summary::-webkit-details-marker { display: none; }
   details summary::after { content: "+"; color: var(--faint); font-size: 20px; font-weight: 400; flex: none; }
-  details[open] summary::after { content: "–"; }
+  details[open] summary::after { content: "-"; }
   details summary:hover::after, details[open] summary::after { color: var(--accent); }
   details div { padding: 0 0 18px; color: var(--muted); font-size: 15px; max-width: 640px; }
 
@@ -272,13 +263,19 @@
         <button class="copy" data-copy="brew install --cask tubefold/tap/tubefold" aria-label="Copy install command" aria-live="polite">Copy</button>
       </div>
     </div>
-    <p class="reqs">Free &amp; open source (MIT) · macOS 26+ · uses your own <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> or <a href="https://github.com/openai/codex">Codex</a> CLI</p>
+    <p class="reqs">
+      <span>Free &amp; open source (MIT)</span>
+      <span>macOS 26+</span>
+      <span>Uses your own <a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code</a> or <a href="https://github.com/openai/codex">Codex</a></span>
+    </p>
   </div>
 </header>
 
 <figure class="hero-shot">
-  <img src="assets/library.png" alt="TubeFold library showing YouTube summaries that are queued, in progress, and ready to read" width="2024" height="1568" decoding="async" fetchpriority="high" />
-  <figcaption>Your local library keeps every video, summary, and Markdown file in one place.</figcaption>
+  <picture>
+    <source srcset="assets/library.webp" type="image/webp" />
+    <img src="assets/library.png" alt="TubeFold library showing YouTube summaries that are in progress and ready to read" width="2024" height="1568" decoding="async" fetchpriority="high" />
+  </picture>
 </figure>
 
 <main id="main">
@@ -287,19 +284,19 @@
   <section id="how" aria-labelledby="how-h">
     <p class="kicker">How it works</p>
     <h2 id="how-h">Five steps, one of them yours</h2>
-    <p class="lede">Paste a link — or click the Chrome extension while watching. TubeFold does the rest and files the note in your library.</p>
+    <p class="lede">Paste a link, or click the Chrome extension while watching. TubeFold does the rest and files the note in your library.</p>
     <div class="pipe" role="list">
-      <div class="step" role="listitem"><span class="n">01</span><b>YouTube URL</b><span>pasted in the app, or sent with one click from the browser extension</span></div>
-      <div class="step" role="listitem"><span class="n">02</span><b>Transcript</b><span>fetched in the video's original spoken language, with the metadata</span></div>
-      <div class="step" role="listitem"><span class="n">03</span><b>Prompt</b><span>a plain-text template you can read and edit wraps the transcript</span></div>
-      <div class="step" role="listitem"><span class="n">04</span><b>Your CLI</b><span><code>claude</code> or <code>codex</code> runs it on your own subscription. No API key involved.</span></div>
-      <div class="step" role="listitem"><span class="n">05</span><b>Markdown note</b><span>structured summary + metadata front matter, saved to your library as a file</span></div>
+      <div class="step" role="listitem"><b>YouTube URL</b><span>pasted in the app, or sent with one click from the browser extension</span></div>
+      <div class="step" role="listitem"><b>Transcript</b><span>fetched in the video's original spoken language, with the metadata</span></div>
+      <div class="step" role="listitem"><b>Prompt</b><span>a plain-text template you can read and edit wraps the transcript</span></div>
+      <div class="step" role="listitem"><b>Your CLI</b><span><code>claude</code> or <code>codex</code> runs it on your own subscription. No API key involved.</span></div>
+      <div class="step" role="listitem"><b>Markdown note</b><span>structured summary + metadata front matter, saved to your library as a file</span></div>
     </div>
   </section>
 
   <section aria-labelledby="note-h">
     <h2 id="note-h">What a note looks like</h2>
-    <p class="lede">Structured, sourced, and yours — ready for Obsidian, a docs folder, or anywhere plain text lives. The metadata front matter is generated by the pipeline, never invented by the model.</p>
+    <p class="lede">Structured, sourced, and yours. Ready for Obsidian, a docs folder, or anywhere plain text lives. The metadata front matter is generated by the pipeline, never invented by the model.</p>
     <figure class="note-demo" aria-label="Example Markdown note">
       <div class="bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span>The Craft of Software Design.md</span></div>
       <div class="note-body"><pre><span class="h"># The Craft of Software Design</span>
@@ -404,7 +401,11 @@
         <button class="copy" data-copy="brew install --cask tubefold/tap/tubefold" aria-label="Copy install command" aria-live="polite">Copy</button>
       </div>
     </div>
-    <p class="reqs">macOS 26+ · free &amp; open source · <a href="https://github.com/TubeFold/App"><svg class="gh-ico" aria-hidden="true"><use href="#i-gh"/></svg>view on GitHub</a></p>
+    <p class="reqs">
+      <span>macOS 26+</span>
+      <span>Free &amp; open source</span>
+      <span><a href="https://github.com/TubeFold/App"><svg class="gh-ico" aria-hidden="true"><use href="#i-gh"/></svg>View on GitHub</a></span>
+    </p>
   </section>
 
 </div>
