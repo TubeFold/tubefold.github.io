@@ -1,0 +1,26 @@
+# TubeFold
+
+> TubeFold is a free, open-source (MIT) native macOS app that turns YouTube videos into structured Markdown notes. It runs summaries through the user's own Claude Code or Codex CLI, so it uses the Claude or ChatGPT subscription they already pay for. No API keys, no account, no TubeFold servers. Requires macOS 26 or later.
+
+How it works: paste a YouTube URL in the app (or send the current video from the Chrome extension). TubeFold fetches the transcript in the video's original spoken language, wraps it in an editable plain-text prompt, runs `claude` or `codex` on the user's subscription, and saves a Markdown note with metadata front matter to a local library.
+
+Key facts:
+
+- Notes are plain Markdown files on the user's Mac, ready for Obsidian or any folder of text files.
+- The app, backend, library and files are local. AI inference is not: the transcript goes to Anthropic or OpenAI through the user's own CLI.
+- Summaries can be written in any language, independent of the video's language.
+- Extras: Chrome extension for one-click capture, PDF export, one-click publishing to Telegraph.
+- Custom AI backends, including local models, can be added as a small shell script that takes a prompt file and writes Markdown back.
+- Install: `brew install --cask tubefold/tap/tubefold`, or download the notarized app from GitHub Releases.
+
+## Links
+
+- [Website](https://tubefold.app/): landing page with features, how it works, and FAQ
+- [Source code](https://github.com/TubeFold/App): the macOS app, MIT licensed
+- [Latest release](https://github.com/TubeFold/App/releases/latest): notarized TubeFold.zip download
+- [Chrome extension](https://chromewebstore.google.com/detail/tubefold-mac-app-companio/hjfcdpioihmgoccmfkcicofjgbkjidbh): sends the YouTube video you're watching to the app
+- [Homebrew tap](https://github.com/TubeFold/homebrew-tap): the Homebrew cask
+
+## Optional
+
+- [Privacy policy](https://tubefold.app/privacy)
