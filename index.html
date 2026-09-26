@@ -15,20 +15,49 @@
 <meta name="twitter:title" content="TubeFold App" />
 <meta name="twitter:description" content="Paste a YouTube link. Get a structured Markdown summary." />
 <meta name="twitter:image" content="https://tubefold.app/assets/library.png" />
-<link rel="icon" type="image/png" href="logo.png" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="icon" href="/favicon.ico" sizes="48x48" />
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#fcfcfd" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#0d0d0f" media="(prefers-color-scheme: dark)" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "TubeFold",
-  "operatingSystem": "macOS 26+",
-  "applicationCategory": "UtilitiesApplication",
-  "description": "Open-source macOS app that turns YouTube videos into structured Markdown notes using the user's own Claude Code or Codex subscription.",
-  "url": "https://tubefold.app/",
-  "downloadUrl": "https://github.com/TubeFold/App/releases/latest/download/TubeFold.zip",
-  "license": "https://github.com/TubeFold/App/blob/main/LICENSE",
-  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://tubefold.app/#website",
+      "name": "TubeFold",
+      "url": "https://tubefold.app/",
+      "publisher": { "@id": "https://tubefold.app/#organization" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://tubefold.app/#organization",
+      "name": "TubeFold",
+      "url": "https://tubefold.app/",
+      "logo": "https://tubefold.app/icon-512.png",
+      "sameAs": [
+        "https://github.com/TubeFold",
+        "https://chromewebstore.google.com/detail/tubefold-mac-app-companio/hjfcdpioihmgoccmfkcicofjgbkjidbh"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "TubeFold",
+      "operatingSystem": "macOS 26+",
+      "applicationCategory": "UtilitiesApplication",
+      "description": "Open-source macOS app that turns YouTube videos into structured Markdown notes using the user's own Claude Code or Codex subscription.",
+      "url": "https://tubefold.app/",
+      "image": "https://tubefold.app/icon-512.png",
+      "screenshot": "https://tubefold.app/assets/library.png",
+      "downloadUrl": "https://github.com/TubeFold/App/releases/latest/download/TubeFold.zip",
+      "license": "https://github.com/TubeFold/App/blob/main/LICENSE",
+      "publisher": { "@id": "https://tubefold.app/#organization" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  ]
 }
 </script>
 <style>
