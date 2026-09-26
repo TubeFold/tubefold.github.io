@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>TubeFold - Turn YouTube videos into Markdown notes on your Mac</title>
 <meta name="description" content="Free, open-source macOS app that summarizes YouTube videos into structured Markdown notes using your own Claude Code or Codex subscription. No API keys, no account, no servers." />
-<link rel="canonical" href="https://tubefold.github.io/" />
+<link rel="canonical" href="https://tubefold.app/" />
 <meta property="og:title" content="TubeFold App" />
 <meta property="og:description" content="Paste a YouTube link. Get a structured Markdown summary." />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://tubefold.github.io/" />
-<meta property="og:image" content="https://tubefold.github.io/assets/library.png" />
+<meta property="og:url" content="https://tubefold.app/" />
+<meta property="og:image" content="https://tubefold.app/assets/library.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="TubeFold App" />
 <meta name="twitter:description" content="Paste a YouTube link. Get a structured Markdown summary." />
-<meta name="twitter:image" content="https://tubefold.github.io/assets/library.png" />
+<meta name="twitter:image" content="https://tubefold.app/assets/library.png" />
 <link rel="icon" type="image/png" href="logo.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 <script type="application/ld+json">
@@ -25,7 +25,7 @@
   "operatingSystem": "macOS 26+",
   "applicationCategory": "UtilitiesApplication",
   "description": "Open-source macOS app that turns YouTube videos into structured Markdown notes using the user's own Claude Code or Codex subscription.",
-  "url": "https://tubefold.github.io/",
+  "url": "https://tubefold.app/",
   "downloadUrl": "https://github.com/TubeFold/App/releases/latest/download/TubeFold.zip",
   "license": "https://github.com/TubeFold/App/blob/main/LICENSE",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
@@ -338,7 +338,7 @@
 
   <section aria-labelledby="oss-h">
     <h2 id="oss-h">Small enough to actually read</h2>
-    <p class="prose">TubeFold is MIT-licensed: a SwiftUI app supervising an embedded Python backend, with a pipeline you can trace file by file. The prompt is a Markdown template you can edit. A provider is just an executable that takes a prompt file and writes Markdown back. Adding another AI backend, including a local model, is a small shell script. If privacy matters to you, don't take our word for it: <a href="https://github.com/TubeFold/App">read the code</a>.</p>
+    <p class="prose">TubeFold is MIT-licensed: a native SwiftUI app over a small Swift package, with a pipeline you can trace file by file. The prompt is a Markdown template you can edit. A provider is a thin wrapper around a CLI you already have, and a custom one is just an executable that takes a prompt file and writes Markdown back. Adding another AI backend, including a local model, is a small shell script. If privacy matters to you, don't take our word for it: <a href="https://github.com/TubeFold/App">read the code</a>.</p>
     <p class="actions">
       <a class="btn ghost" href="https://github.com/TubeFold/App"><svg class="gh-ico" aria-hidden="true"><use href="#i-gh"/></svg>Star or fork on GitHub</a>
       <a class="btn ghost" href="https://github.com/TubeFold/App/blob/main/CONTRIBUTING.md">Contribute</a>
@@ -365,7 +365,7 @@
     </details>
     <details>
       <summary>Why trust a new open-source project?</summary>
-      <div>Don't trust us. Read the code. The privacy-relevant code is a handful of small Python files with no web framework. Because your notes are plain Markdown on your disk, the exit cost is zero: if TubeFold disappeared tomorrow, your notes wouldn't.</div>
+      <div>Don't trust us. Read the code. The privacy-relevant code is a handful of small Swift files with no web framework. Because your notes are plain Markdown on your disk, the exit cost is zero: if TubeFold disappeared tomorrow, your notes wouldn't.</div>
     </details>
   </section>
 
@@ -397,7 +397,7 @@
       <nav aria-label="Footer">
         <a href="https://github.com/TubeFold/App"><svg class="gh-ico" aria-hidden="true"><use href="#i-gh"/></svg>GitHub</a>
         <a href="https://chromewebstore.google.com/detail/tubefold-mac-app-companio/hjfcdpioihmgoccmfkcicofjgbkjidbh"><svg class="gh-ico" aria-hidden="true"><use href="#i-cr"/></svg>Chrome extension</a>
-        <a href="privacy.html">Privacy</a>
+        <a href="/privacy">Privacy</a>
         <a href="https://github.com/TubeFold/App/blob/main/LICENSE">MIT License</a>
       </nav>
     </div>
